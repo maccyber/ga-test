@@ -19,8 +19,9 @@ jobs:
 
       - name: test and build
         run: bash ./gradlew --console=plain test
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: ktlint linter
+        run: bash ./gradlew --console=plain ktlintCheck
 
       - name: Cleanup Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
