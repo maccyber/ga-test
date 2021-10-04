@@ -8,7 +8,6 @@
 #   deploy-to-prod:
 #     name: Deploy to prod-gcp
 #     runs-on: ubuntu-latest
-#     needs: build
 #     steps:
 #       - uses: actions/checkout@master
 #       - uses: nais/deploy/actions/deploy@master
