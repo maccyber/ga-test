@@ -20,7 +20,7 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
-      - name: build, test and lint-check
+      - name: Build, test and lint-check
         uses: gradle/gradle-build-action@v2
         with:
           arguments: --console=plain build test ktlintCheck jar
