@@ -1,4 +1,4 @@
-name: Bygg og deploy til preprod
+name: Bygg og deploy til PREPROD (dev-gcp)
 
 on:
   push:
@@ -57,5 +57,20 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=registry,ref={{ github.repository }}:latest
+          cache-from: type=registry,ref=${{ github.repository }}:latest
           cache-to: type=inline
+
+  # deploy-to-dev:
+  #   name: Deploy to dev-gcp
+  #   runs-on: ubuntu-latest
+  #   needs: buildAndTest
+  #   steps:
+  #     - uses: actions/checkout@master
+  #     - uses: nais/deploy/actions/deploy@master
+  #       env:
+  #         TEAM: helsearbeidsgiver
+  #         APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+  #         CLUSTER: dev-gcp
+  #         RESOURCE: deploy/dev.yaml
+  #         REF: ${{ env.COMMIT }}
+  #         IMAGE: ghcr.io/${{ github.repository }}/${{ github.event.repository.name }}:${{ github.sha }}
