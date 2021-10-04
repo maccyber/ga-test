@@ -17,11 +17,10 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
-      - name: test and build
-        run: bash ./gradlew --console=plain test
-
-      - name: ktlint linter
-        run: bash ./gradlew --console=plain ktlintCheck
+      - name: Build, test and lint-check
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: --console=plain build test ktlintCheck jar
 
       - name: Cleanup Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
