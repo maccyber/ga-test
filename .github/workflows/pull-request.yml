@@ -20,7 +20,7 @@ jobs:
       - name: Build, test and lint-check
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: --console=plain build test ktlintCheck jar
+          arguments: --console=plain build test ktlintCheck
 
       - name: Cleanup Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
